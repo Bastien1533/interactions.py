@@ -21,12 +21,10 @@ c_float_ptr = ctypes.POINTER(ctypes.c_float)
 lib_opus = MISSING
 
 
-class EncoderStructure(ctypes.Structure):
-    ...
+class EncoderStructure(ctypes.Structure): ...
 
 
-class DecoderStructure(ctypes.Structure):
-    ...
+class DecoderStructure(ctypes.Structure): ...
 
 
 EncoderStructurePointer = ctypes.POINTER(EncoderStructure)

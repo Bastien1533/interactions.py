@@ -805,9 +805,9 @@ class Guild(BaseGuild):
             name=name,
             description=description,
             verification_level=int(verification_level) if verification_level else MISSING,
-            default_message_notifications=int(default_message_notifications)
-            if default_message_notifications
-            else MISSING,
+            default_message_notifications=(
+                int(default_message_notifications) if default_message_notifications else MISSING
+            ),
             explicit_content_filter=int(explicit_content_filter) if explicit_content_filter else MISSING,
             afk_channel_id=to_snowflake(afk_channel) if afk_channel else MISSING,
             afk_timeout=afk_timeout,

@@ -843,8 +843,7 @@ class ComponentCommand(InteractionCommand):
 
 
 @attrs.define(eq=False, order=False, hash=False, kw_only=True)
-class ModalCommand(ComponentCommand):
-    ...
+class ModalCommand(ComponentCommand): ...
 
 
 def _unpack_helper(iterable: typing.Iterable[str]) -> list[str]:
@@ -1350,9 +1349,11 @@ def application_commands_to_dict(  # noqa: C901
                     "name": str(subcommand.name),
                     "description": str(subcommand.description),
                     "options": [],
-                    "default_member_permissions": str(int(subcommand.default_member_permissions))
-                    if subcommand.default_member_permissions
-                    else None,
+                    "default_member_permissions": (
+                        str(int(subcommand.default_member_permissions))
+                        if subcommand.default_member_permissions
+                        else None
+                    ),
                     "dm_permission": subcommand.dm_permission,
                     "name_localizations": subcommand.name.to_locale_dict(),
                     "description_localizations": subcommand.description.to_locale_dict(),

@@ -408,9 +408,9 @@ class Client(
         """A dictionary of registered application commands: `{scope: [commands]}`"""
         self._interaction_lookup: dict[str, InteractionCommand] = {}
         """A dictionary of registered application commands: `{name: command}`"""
-        self.interaction_tree: Dict[
-            "Snowflake_Type", Dict[str, InteractionCommand | Dict[str, InteractionCommand]]
-        ] = {}
+        self.interaction_tree: Dict["Snowflake_Type", Dict[str, InteractionCommand | Dict[str, InteractionCommand]]] = (
+            {}
+        )
         """A dictionary of registered application commands in a tree"""
         self._component_callbacks: Dict[str, Callable[..., Coroutine]] = {}
         self._regex_component_callbacks: Dict[re.Pattern, Callable[..., Coroutine]] = {}

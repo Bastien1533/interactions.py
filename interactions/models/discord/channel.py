@@ -2654,8 +2654,7 @@ class GuildForum(GuildChannel):
 
 
 @attrs.define(eq=False, order=False, hash=False, kw_only=True)
-class GuildMedia(GuildForum):
-    ...
+class GuildMedia(GuildForum): ...
 
 
 def process_permission_overwrites(

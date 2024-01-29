@@ -642,9 +642,11 @@ class ContextMenuContext(InteractionContext, ModalMixin):
             raise AlreadyResponded("Interaction has already been responded to.")
 
         payload = {
-            "type": CallbackType.DEFERRED_UPDATE_MESSAGE
-            if edit_origin
-            else CallbackType.DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE
+            "type": (
+                CallbackType.DEFERRED_UPDATE_MESSAGE
+                if edit_origin
+                else CallbackType.DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE
+            )
         }
         if ephemeral:
             if edit_origin:
@@ -732,9 +734,11 @@ class ComponentContext(InteractionContext, ModalMixin):
             raise AlreadyResponded("Interaction has already been responded to.")
 
         payload = {
-            "type": CallbackType.DEFERRED_UPDATE_MESSAGE
-            if edit_origin
-            else CallbackType.DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE
+            "type": (
+                CallbackType.DEFERRED_UPDATE_MESSAGE
+                if edit_origin
+                else CallbackType.DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE
+            )
         }
         if ephemeral:
             if edit_origin:
@@ -866,9 +870,11 @@ class ModalContext(InteractionContext):
             raise AlreadyResponded("Interaction has already been responded to.")
 
         payload = {
-            "type": CallbackType.DEFERRED_UPDATE_MESSAGE
-            if edit_origin
-            else CallbackType.DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE
+            "type": (
+                CallbackType.DEFERRED_UPDATE_MESSAGE
+                if edit_origin
+                else CallbackType.DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE
+            )
         }
         if ephemeral:
             payload["data"] = {"flags": MessageFlags.EPHEMERAL}

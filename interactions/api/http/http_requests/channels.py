@@ -41,8 +41,7 @@ class ChannelRequests(CanRequest):
         self,
         channel_id: "Snowflake_Type",
         limit: int = 50,
-    ) -> list[discord_typings.MessageData]:
-        ...
+    ) -> list[discord_typings.MessageData]: ...
 
     @overload
     async def get_channel_messages(
@@ -51,8 +50,7 @@ class ChannelRequests(CanRequest):
         limit: int = 50,
         *,
         around: "Snowflake_Type | None" = None,
-    ) -> list[discord_typings.MessageData]:
-        ...
+    ) -> list[discord_typings.MessageData]: ...
 
     @overload
     async def get_channel_messages(
@@ -61,8 +59,7 @@ class ChannelRequests(CanRequest):
         limit: int = 50,
         *,
         before: "Snowflake_Type | None" = None,
-    ) -> list[discord_typings.MessageData]:
-        ...
+    ) -> list[discord_typings.MessageData]: ...
 
     @overload
     async def get_channel_messages(
@@ -71,8 +68,7 @@ class ChannelRequests(CanRequest):
         limit: int = 50,
         *,
         after: "Snowflake_Type | None" = None,
-    ) -> list[discord_typings.MessageData]:
-        ...
+    ) -> list[discord_typings.MessageData]: ...
 
     async def get_channel_messages(
         self,
@@ -263,8 +259,7 @@ class ChannelRequests(CanRequest):
         unique: bool = False,
         *,
         reason: str | None = None,
-    ) -> discord_typings.InviteData:
-        ...
+    ) -> discord_typings.InviteData: ...
 
     @overload
     async def create_channel_invite(
@@ -277,8 +272,7 @@ class ChannelRequests(CanRequest):
         *,
         target_user_id: "Snowflake_Type | None" = None,
         reason: str | None = None,
-    ) -> discord_typings.InviteData:
-        ...
+    ) -> discord_typings.InviteData: ...
 
     @overload
     async def create_channel_invite(
@@ -291,8 +285,7 @@ class ChannelRequests(CanRequest):
         *,
         target_application_id: "Snowflake_Type | None" = None,
         reason: str | None = None,
-    ) -> discord_typings.InviteData:
-        ...
+    ) -> discord_typings.InviteData: ...
 
     async def create_channel_invite(
         self,

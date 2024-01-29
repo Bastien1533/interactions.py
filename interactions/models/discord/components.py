@@ -360,19 +360,8 @@ class SelectDefaultValues(DiscordObject):
 
 
 class DefaultableSelectMenu(BaseSelectMenu):
-    default_values: list[
-        Union[
-            "interactions.models.discord.BaseUser",
-            "interactions.models.discord.Role",
-            "interactions.models.discord.BaseChannel",
-            "interactions.models.discord.Member",
-            SelectDefaultValues,
-        ]
-    ] | None = None
-
-    def __init__(
-        self,
-        defaults: list[
+    default_values: (
+        list[
             Union[
                 "interactions.models.discord.BaseUser",
                 "interactions.models.discord.Role",
@@ -381,7 +370,23 @@ class DefaultableSelectMenu(BaseSelectMenu):
                 SelectDefaultValues,
             ]
         ]
-        | None = None,
+        | None
+    ) = None
+
+    def __init__(
+        self,
+        defaults: (
+            list[
+                Union[
+                    "interactions.models.discord.BaseUser",
+                    "interactions.models.discord.Role",
+                    "interactions.models.discord.BaseChannel",
+                    "interactions.models.discord.Member",
+                    SelectDefaultValues,
+                ]
+            ]
+            | None
+        ) = None,
         **kwargs,
     ) -> None:
         super().__init__(**kwargs)
@@ -405,9 +410,11 @@ class DefaultableSelectMenu(BaseSelectMenu):
         data = super().to_dict()
         if self.default_values is not None:
             data["default_values"] = [  # type: ignore # waiting on discord typings to update
-                value.to_dict()
-                if isinstance(value, SelectDefaultValues)
-                else SelectDefaultValues.from_object(value).to_dict()
+                (
+                    value.to_dict()
+                    if isinstance(value, SelectDefaultValues)
+                    else SelectDefaultValues.from_object(value).to_dict()
+                )
                 for value in self.default_values
             ]
 
@@ -571,16 +578,18 @@ class UserSelectMenu(DefaultableSelectMenu):
         min_values: int = 1,
         max_values: int = 1,
         custom_id: str | None = None,
-        default_values: list[
-            Union[
-                "interactions.models.discord.BaseUser",
-                "interactions.models.discord.Role",
-                "interactions.models.discord.BaseChannel",
-                "interactions.models.discord.Member",
-                SelectDefaultValues,
-            ],
-        ]
-        | None = None,
+        default_values: (
+            list[
+                Union[
+                    "interactions.models.discord.BaseUser",
+                    "interactions.models.discord.Role",
+                    "interactions.models.discord.BaseChannel",
+                    "interactions.models.discord.Member",
+                    SelectDefaultValues,
+                ],
+            ]
+            | None
+        ) = None,
         disabled: bool = False,
     ) -> None:
         super().__init__(
@@ -616,16 +625,18 @@ class RoleSelectMenu(DefaultableSelectMenu):
         max_values: int = 1,
         custom_id: str | None = None,
         disabled: bool = False,
-        default_values: list[
-            Union[
-                "interactions.models.discord.BaseUser",
-                "interactions.models.discord.Role",
-                "interactions.models.discord.BaseChannel",
-                "interactions.models.discord.Member",
-                SelectDefaultValues,
-            ],
-        ]
-        | None = None,
+        default_values: (
+            list[
+                Union[
+                    "interactions.models.discord.BaseUser",
+                    "interactions.models.discord.Role",
+                    "interactions.models.discord.BaseChannel",
+                    "interactions.models.discord.Member",
+                    SelectDefaultValues,
+                ],
+            ]
+            | None
+        ) = None,
     ) -> None:
         super().__init__(
             placeholder=placeholder,
@@ -648,16 +659,18 @@ class MentionableSelectMenu(DefaultableSelectMenu):
         max_values: int = 1,
         custom_id: str | None = None,
         disabled: bool = False,
-        default_values: list[
-            Union[
-                "interactions.models.discord.BaseUser",
-                "interactions.models.discord.Role",
-                "interactions.models.discord.BaseChannel",
-                "interactions.models.discord.Member",
-                SelectDefaultValues,
-            ],
-        ]
-        | None = None,
+        default_values: (
+            list[
+                Union[
+                    "interactions.models.discord.BaseUser",
+                    "interactions.models.discord.Role",
+                    "interactions.models.discord.BaseChannel",
+                    "interactions.models.discord.Member",
+                    SelectDefaultValues,
+                ],
+            ]
+            | None
+        ) = None,
     ) -> None:
         super().__init__(
             placeholder=placeholder,
@@ -681,16 +694,18 @@ class ChannelSelectMenu(DefaultableSelectMenu):
         max_values: int = 1,
         custom_id: str | None = None,
         disabled: bool = False,
-        default_values: list[
-            Union[
-                "interactions.models.discord.BaseUser",
-                "interactions.models.discord.Role",
-                "interactions.models.discord.BaseChannel",
-                "interactions.models.discord.Member",
-                SelectDefaultValues,
-            ],
-        ]
-        | None = None,
+        default_values: (
+            list[
+                Union[
+                    "interactions.models.discord.BaseUser",
+                    "interactions.models.discord.Role",
+                    "interactions.models.discord.BaseChannel",
+                    "interactions.models.discord.Member",
+                    SelectDefaultValues,
+                ],
+            ]
+            | None
+        ) = None,
     ) -> None:
         super().__init__(
             placeholder=placeholder,
